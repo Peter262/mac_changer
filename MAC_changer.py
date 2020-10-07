@@ -21,6 +21,7 @@ class mac_changer:
         self.mac = current_mac
         return current_mac
     
+'''Third function to change the MAC address of the system.'''
     def change_mac (self,iface,new_mac):
         print("[+] Current MAC Address is ", self.get_mac(iface))
         output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
