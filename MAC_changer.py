@@ -1,8 +1,15 @@
+'''In order to run command we import the sub-process module.'''
 import subprocess
-import re
+'''In order to search this we have to import re (Regular Expression) module in the program.'''
+import re 
+
+'''creating a mac changer class'''
 class mac_changer:
+    '''First function will be the constructor and it will take self.Self is argument '''
     def __init__(self):
         self.mac = ""
+    
+    '''Second function to get us mac address of the system.'''
     def get_mac(self,iface):
         output = subprocess.run(["ifconfig", iface], shell=False, capture_output=True)
         cmd_result = output.stdout.decode('utf-8')
@@ -12,6 +19,7 @@ class mac_changer:
         current_mac = ans.group().split(" ")[1]
         self.mac = current_mac
         return current_mac
+    
     def change_mac (self,iface,new_mac):
         print("[+] Current MAC Address is ", self.get_mac(iface))
         output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
