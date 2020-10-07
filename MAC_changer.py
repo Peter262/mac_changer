@@ -5,11 +5,11 @@ import re
 
 '''creating a mac changer class'''
 class mac_changer:
-    '''First function will be the constructor and it will take self.Self is argument '''
+'''First function will be the constructor and it will take self.Self is argument '''
     def __init__(self):
         self.mac = ""
     
-    '''Second function to get us mac address of the system.'''
+'''Second function to get us mac address of the system.'''
     def get_mac(self,iface):
         output = subprocess.run(["ifconfig", iface], shell=False, capture_output=True)
         cmd_result = output.stdout.decode('utf-8')
