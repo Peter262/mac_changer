@@ -5,6 +5,7 @@ import re
 
 '''creating a mac changer class'''
 class mac_changer:
+
 '''First function will be the constructor and it will take self.Self is argument '''
     def __init__(self):
         self.mac = ""
