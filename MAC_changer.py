@@ -18,10 +18,10 @@ class mac_changer:
     	'''
 	def __init__(self):
     	
-	'''
-   	 Initialize a variable with no mac address, to use them in further program.
-    	'''
-        self.mac = "" 
+		'''
+   	 	Initialize a variable with no mac address, to use them in further program.
+    		'''
+        	self.mac = "" 
 	
 	'''
 	Second function to get us mac address of the system.
