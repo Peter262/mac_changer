@@ -13,20 +13,22 @@ creating a mac changer class
 '''
 class mac_changer:
 
-    '''
-    First function will be the constructor and it will take self.Self is argument
-    '''
-    def __init__(self):
-    '''
-    Initialize a variable with no mac address, to use them in further program.
-    '''
+    	'''
+    	First function will be the constructor and it will take self.Self is argument
+    	'''
+	def __init__(self):
+    	
+	'''
+   	 Initialize a variable with no mac address, to use them in further program.
+    	'''
         self.mac = "" 
-    
-    '''
-    Second function to get us mac address of the system.
-    '''
-    def get_mac(self,iface):
-        '''
+	
+	'''
+	Second function to get us mac address of the system.
+	'''
+	def get_mac(self,iface):
+        
+	'''
 	To run the first ifconfig command to get the current mac address, you can give is as a list. 
         This line will give us the ifconfig result ( not a string ) & save it in variable.
 	'''
@@ -52,7 +54,7 @@ To do that, copy the whole output. And go to https://regex101.com & paste it in
 	3. We can see there are two digits in every section. So in order to select two digits we use 2 and put it inside { }. like {2} . Now we find the first section of the mac address. 
 	4. To find the all six section of the mac address we can copy the search query, separate each section by : & paste it five times. like [\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}
 4. Now copy the whole ether\s[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2} 
-'''
+	'''
         pattern = r'ether\s[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}:[\da-z]{2}'
         
 	'''
@@ -64,16 +66,16 @@ To do that, copy the whole output. And go to https://regex101.com & paste it in
         self.mac = current_mac
         return current_mac
     
-'''
-Third function to change the MAC address of the system.
-'''
-    def change_mac (self,iface,new_mac):
-        print("[+] Current MAC Address is ", self.get_mac(iface))
-        output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        output = subprocess.run(["ifconfig",iface,"hw" , "ether", new_mac], shell=False, capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        output = subprocess.run(["ifconfig" , iface , "up"], shell=False,capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        print("[+] Updated MAC Address is ", self.get_mac(iface))
-        return self.get_mac(iface)
+	'''
+	Third function to change the MAC address of the system.
+	'''
+	def change_mac (self,iface,new_mac):
+        	print("[+] Current MAC Address is ", self.get_mac(iface))
+        	output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
+        	print(output.stderr.decode('utf-8'))
+        	output = subprocess.run(["ifconfig",iface,"hw" , "ether", new_mac], shell=False, capture_output=True)
+        	print(output.stderr.decode('utf-8'))
+        	output = subprocess.run(["ifconfig" , iface , "up"], shell=False,capture_output=True)
+        	print(output.stderr.decode('utf-8'))
+        	print("[+] Updated MAC Address is ", self.get_mac(iface))
+        	return self.get_mac(iface)
