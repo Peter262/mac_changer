@@ -26,14 +26,14 @@ class mac_changer:
 		self.mac = current_mac
 		return current_mac
 
-# Third function to change the MAC address of the system.
-	def change_mac (self,iface,new_mac):
-        print("[+] Current MAC Address is ", self.get_mac(iface))
-        output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        output = subprocess.run(["ifconfig",iface,"hw" , "ether", new_mac], shell=False, capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        output = subprocess.run(["ifconfig" , iface , "up"], shell=False,capture_output=True)
-        print(output.stderr.decode('utf-8'))
-        print("[+] Updated MAC Address is ", self.get_mac(iface))
-        return self.get_mac(iface)
+#Third function to change the MAC address of the system.
+	def change_mac(self,iface,new_mac) :
+		print("[+] Current MAC Address is ",self.get_mac(iface))
+		output = subprocess.run(["ifconfig",iface,"down"], shell=False, capture_output=True)
+		print(output.stderr.decode('utf-8'))
+		output = subprocess.run(["ifconfig",iface, "hw", "ether", new_mac], shell=False, capture_output=True)
+		print(output.stderr.decode('utf-8'))
+		output = subprocess.run(["ifconfig", iface, "up"], shell=False, capture_output=True)
+		print(output.stderr.decode('utf-8'))
+		print("[+] Updated MAC Address is ", self.get_mac(iface))
+		return self.get_mac(iface)
